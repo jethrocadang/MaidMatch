@@ -1,44 +1,62 @@
 import React, { cloneElement } from "react";
 import { Component } from "react";
 import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
-import { Ionicons, Feather, MaterialCommunityIcons } from "@expo/vector-icons";
+import {
+  Ionicons,
+  Feather,
+  MaterialCommunityIcons,
+  AntDesign,
+} from "@expo/vector-icons";
 
-export default class BookingCard extends Component {
+export default class BookingCard extends React.Component {
   render() {
+
     return (
       <View>
         <TouchableOpacity style={Styles.cardContainer}>
           <View style={Styles.container}>
             <Image
-              source={require("../assets/profilepic.png")}
+              source={this.props.img}
               style={Styles.image}
             />
-            <View>
+            <View style={Styles.rightContainer}>
               <View style={Styles.textContainer}>
-                <Text>Sherline Armie</Text>
+                <Text>{this.props.name}</Text>
+                <Ionicons
+                  name={this.props.statusIcon}
+                  size={24}
+                  color="#F86A40"
+                  style={Styles.cardIcon}
+                />
               </View>
               <View style={Styles.textContainer}>
-              <Ionicons name="location-outline" size={24} color="black" />
-                <Text>Larlin </Text>
+                <Ionicons name="location-outline" size={22} color="black" />
+                <Text style={Styles.address} numberOfLines={2}>
+                {this.props.address}
+                </Text>
               </View>
-              <Text style={Styles.service}>Home Cleaning</Text>
-              <View style={Styles.textContainer}>
-                <Feather name="calendar" size={24} color="black" />
-
-                <Text>October 17, 2023</Text>
+              <View style={Styles.serviceContainer}>
+                <Text style={Styles.service}>{this.props.service}</Text>
+              </View>
+              <View style={Styles.timeContainer}>
+                <Feather name="calendar" size={20} color="#2F2E41" />
+                <Text style={Styles.text}>{this.props.date}</Text>
                 <MaterialCommunityIcons
                   name="clock-time-two-outline"
-                  size={24}
-                  color="black"
+                  size={22}
+                  color="#2F2E41"
                 />
-                <Text>10:00 PM</Text>
+                <Text style={Styles.text}>{this.props.time}</Text>
+              </View>
+              <View style={Styles.ratings}>
+                <Text>Ratings</Text>
+                <Ionicons name="ios-star-outline" size={18} color="black" />
+                <Ionicons name="ios-star-outline" size={18} color="black" />
+                <Ionicons name="ios-star-outline" size={18} color="black" />
+                <Ionicons name="ios-star-outline" size={18} color="black" />
+                <Ionicons name="ios-star-outline" size={18} color="black" />
               </View>
             </View>
-          </View>
-
-          <View style={Styles.ratings}>
-            <Text>Ratings</Text>
-            <Text>* * * * *</Text>
           </View>
         </TouchableOpacity>
       </View>
@@ -47,19 +65,28 @@ export default class BookingCard extends Component {
 }
 
 const Styles = StyleSheet.create({
+
   cardContainer: {
-    backgroundColor: "#F9E8D9",
+    backgroundColor: "white",
     flexDirection: "column",
-    height: 130,
+    height: 140,
     marginHorizontal: 10,
     padding: 5,
     borderWidth: 1,
-    position: "absolute"
-
+    borderRadius: 15,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 5 },
+    shadowOpacity: 0.1,
+    shadowRadius: 10,
+    // Add elevation for Android
+    elevation: 5,
+      
   },
+
   container: {
     flexDirection: "row",
-    backgroundColor: "pink",
+    // backgroundColor: "gray",
+    height: "100%",
   },
   image: {
     height: 90,
@@ -68,21 +95,61 @@ const Styles = StyleSheet.create({
     alignSelf: "center",
     margin: 10,
   },
+  rightContainer: {
+    rowGap: 2,
+  },
   textContainer: {
     flexDirection: "row",
-    alignItems:"center",
+    alignItems: "center",
+    // borderWidth: 1,
+    width: 215,
   },
-  service:{
-    borderWidth: 1,
+  cardIcon:{
+    position: "absolute",
+  right: -20
+  },
+
+  text: {
+    fontSize: 12,
+    // fontFamily: 'NotoSans',
+    fontWeight: "400",
+  },
+
+  address: {
+    width: 165,
+    fontSize: 12,
+    // fontFamily: 'NotoSans',
+    fontWeight: "400",
+  },
+  timeContainer: {
+    backgroundColor: "#FCC3B3",
+    flexDirection: "row",
+    alignItems: "center",
+    columnGap: 5,
+    borderRadius: 5,
+    paddingHorizontal: 10,
+    paddingVertical: 2,
+  },
+  serviceContainer: {
+    alignSelf: "flex-start",
+  },
+  service: {
+    borderWidth: 1.5,
+    borderRadius: 5,
+    borderColor: "#F86A40",
     marginLeft: 24,
     alignSelf: "center",
     paddingHorizontal: 3,
+    fontSize: 12,
+    // fontFamily: 'San Francisco',
+    fontWeight: "500",
+    color: "#F86A40",
+    
   },
   ratings: {
     flexDirection: "row",
     alignSelf: "center",
-    backgroundColor: 'green',
-    position: "absolute",
-    justifyContent: "flex-end",
+    alignItems: "center",
+    columnGap: 5,
   },
 });
