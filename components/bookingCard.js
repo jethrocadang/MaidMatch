@@ -10,16 +10,17 @@ import {
 
 export default class BookingCard extends React.Component {
   render() {
-
     return (
       <View>
-        <TouchableOpacity style={Styles.cardContainer}>
+        <TouchableOpacity style={Styles.cardContainer}
+        onPress={this.props.onPress}>
           <View style={Styles.container}>
-            <Image
-              source={this.props.img}
-              style={Styles.image}
-            />
+            <Image source={this.props.image} style={Styles.image} />
+
+            {/* Content Container */}
             <View style={Styles.rightContainer}>
+            
+            {/* Name */}
               <View style={Styles.textContainer}>
                 <Text>{this.props.name}</Text>
                 <Ionicons
@@ -29,25 +30,33 @@ export default class BookingCard extends React.Component {
                   style={Styles.cardIcon}
                 />
               </View>
+            
+            {/* Address */}
               <View style={Styles.textContainer}>
-                <Ionicons name="location-outline" size={22} color="black" />
+                <Ionicons name="location-outline" size={20} color="black" />
                 <Text style={Styles.address} numberOfLines={2}>
-                {this.props.address}
+                  {this.props.address}
                 </Text>
               </View>
+            
+            {/* Service */}
               <View style={Styles.serviceContainer}>
                 <Text style={Styles.service}>{this.props.service}</Text>
               </View>
+
+            {/* Date & Time */}
               <View style={Styles.timeContainer}>
-                <Feather name="calendar" size={20} color="#2F2E41" />
+                <Feather name="calendar" size={18} color="#2F2E41" />
                 <Text style={Styles.text}>{this.props.date}</Text>
                 <MaterialCommunityIcons
                   name="clock-time-two-outline"
-                  size={22}
+                  size={20}
                   color="#2F2E41"
                 />
                 <Text style={Styles.text}>{this.props.time}</Text>
               </View>
+
+            {/* Ratings */}
               <View style={Styles.ratings}>
                 <Text>Ratings</Text>
                 <Ionicons name="ios-star-outline" size={18} color="black" />
@@ -65,7 +74,6 @@ export default class BookingCard extends React.Component {
 }
 
 const Styles = StyleSheet.create({
-
   cardContainer: {
     backgroundColor: "white",
     flexDirection: "column",
@@ -73,14 +81,14 @@ const Styles = StyleSheet.create({
     marginHorizontal: 10,
     padding: 5,
     borderWidth: 1,
+    borderColor:"#9C9898",
     borderRadius: 15,
-    shadowColor: '#000',
+    shadowColor: "#000",
     shadowOffset: { width: 0, height: 5 },
     shadowOpacity: 0.1,
     shadowRadius: 10,
     // Add elevation for Android
     elevation: 5,
-      
   },
 
   container: {
@@ -104,9 +112,9 @@ const Styles = StyleSheet.create({
     // borderWidth: 1,
     width: 215,
   },
-  cardIcon:{
+  cardIcon: {
     position: "absolute",
-  right: -20
+    right: -20,
   },
 
   text: {
@@ -144,7 +152,6 @@ const Styles = StyleSheet.create({
     // fontFamily: 'San Francisco',
     fontWeight: "500",
     color: "#F86A40",
-    
   },
   ratings: {
     flexDirection: "row",

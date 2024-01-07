@@ -13,6 +13,8 @@ import {
 
 export default class LandingScreen extends Component {
   render() {
+    const { navigation } = this.props;
+
     return (
       <SafeAreaView style={styles.landingContainer}>
         <ImageBackground
@@ -34,9 +36,9 @@ export default class LandingScreen extends Component {
               Perfect Housekeeper
             </Text>
           </View>
-          <TouchableOpacity style={styles.button}>
-            {/* onPress={() => navigate('HomeScreen')}
-          underlayColor='#fff' */}
+          <TouchableOpacity style={styles.button}
+            onPress={() => navigation.navigate("Register")}
+            underlayColor='#fff'>
             <Text style={styles.buttonText}>Get Started</Text>
           </TouchableOpacity>
         </ImageBackground>
@@ -54,13 +56,12 @@ const styles = StyleSheet.create({
   image: {
     marginTop: 70,
     alignSelf: "center",
-
   },
   info: {
     margin: 20,
   },
 
-  h1:{
+  h1: {
     fontSize: 40,
     fontWeight: "700",
   },
@@ -75,6 +76,5 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: "white",
-    
   },
 });

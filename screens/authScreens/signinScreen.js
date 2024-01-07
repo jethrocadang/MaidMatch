@@ -13,6 +13,11 @@ import { CustomButtons, CustomInputs } from "../../components";
 
 export default class SigninScreen extends Component {
   render() {
+
+    const { navigation } = this.props;
+
+    const handleBtnPress = () => navigation.navigate("Register")
+
     return (
       <SafeAreaView>
         <Text style={Styles.h1}>Welcome Back !</Text>
@@ -25,6 +30,8 @@ export default class SigninScreen extends Component {
         />
         <CustomButtons
           title="Sign In"
+          onPress={handleBtnPress}
+         
         />
         <Text style={Styles.text}>Don't have an Account? Sign Up</Text>
       </SafeAreaView>

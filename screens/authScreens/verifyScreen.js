@@ -2,6 +2,8 @@ import React from "react";
 import { Component } from "react";
 import { View, SafeAreaView, Text, TextInput, StyleSheet } from "react-native";
 
+import { CustomButtons } from "../../components";
+
 export default class VerifyScreen extends Component {
   render() {
     return (
@@ -41,6 +43,15 @@ export default class VerifyScreen extends Component {
               value=""
             />
           </View>
+          <View style={Styles.Btn}> 
+          <CustomButtons
+            type="primary"
+            size="small"
+            textColor="white"
+            title="Verify"
+          />
+
+          </View>
         </View>
       </SafeAreaView>
     );
@@ -73,4 +84,7 @@ const Styles = StyleSheet.create({
     padding: 20,
     fontSize: 25,
   },
+  Btn:{
+    marginTop:40
+  }
 });

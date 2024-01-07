@@ -8,6 +8,8 @@ import {
   StyleSheet,
   FlatList,
   Image,
+  Alert,
+  Modal,
 } from "react-native";
 
 import { CustomButtons, CustomInputs } from "../../components";
@@ -29,8 +31,41 @@ export default class SignupScreen extends Component {
     this.setState({ value: item.label, isFocus: false });
   };
 
+  showVerificationModal = () => {
+    this.setState({ showVerificationModal: true });
+  };
+
+  hideVerificationModal = () => {
+    this.setState({ showVerificationModal: false });
+  };
+
   render() {
     const { value, isFocus } = this.state;
+
+    const { navigation } = this.props;
+
+  
+
+    HandleBtnPress = () => {
+      const { value } = this.state;
+
+      if (!value) {
+        Alert.alert("Please select a user type before registering.");
+        return;
+      }
+
+      this.showVerificationModal();
+
+      
+      setTimeout(() => {
+        this.hideVerificationModal();
+        if (value === "Housekeeper") {
+          this.props.navigation.navigate("");
+        } else if (value === "Client") {
+          this.props.navigation.navigate("");
+        }
+      }, 3000); 
+    };
 
     return (
       <SafeAreaView>
@@ -69,7 +104,35 @@ export default class SignupScreen extends Component {
             />
           )}
 
-          <Text style={Styles.bottomText}>I Agree to MaidMatch Terms and Conditions</Text>
+          <Text style={Styles.bottomText}>
+            I Agree to MaidMatch Terms and Conditions
+          </Text>
+
+          <View>
+            <CustomButtons
+              type="primary"
+              size="small"
+              title="Register"
+              textColor="white"
+              onPress={HandleBtnPress}
+            />
+          </View>
+
+          <Modal
+            animationType="slide"
+            transparent={true}
+            visible={this.showVerificationModal}
+            onRequestClose={this.hideVerificationModal}
+          >
+            <View style={Styles.modalContainer}>
+              <View style={Styles.modalContent}>
+                <Text>Email Verification</Text>
+                <Text>A code has been sent to your email.</Text>
+                {/* You may include a text input for entering the verification code */}
+                {/* Add any additional UI or components as needed */}
+              </View>
+            </View>
+          </Modal>
         </View>
       </SafeAreaView>
     );
@@ -87,9 +150,8 @@ const Styles = StyleSheet.create({
     alignSelf: "center",
     marginVertical: 15,
   },
-  inputsContainer:{
-    rowGap:5,
-
+  inputsContainer: {
+    rowGap: 5,
   },
   dropdownButton: {
     marginHorizontal: 20,
@@ -105,8 +167,21 @@ const Styles = StyleSheet.create({
     borderBottomColor: "lightgray",
     marginHorizontal: 20,
   },
-  bottomText:{
-    alignSelf:"center",
+  bottomText: {
+    alignSelf: "center",
     marginTop: 10,
-  }
+  },
+
+  modalContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+  },
+  modalContent: {
+    backgroundColor: "white",
+    padding: 20,
+    borderRadius: 10,
+    alignItems: "center",
+  },
 });
