@@ -6,7 +6,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   FlatList,
-  StatusBar
+  StatusBar,
 } from "react-native";
 
 import { ScheduleCard, ServiceText } from "../../components";
@@ -30,11 +30,11 @@ export default class UserDashboard extends Component {
       },
     ];
 
-    const ServiceItem = ({ title }) => <ServiceText title={title} type="big" />;
+    const ServiceItem = ({ title }) =>  <ServiceText title={title} type="big" style={Styles.service} />;
 
     return (
       <SafeAreaView style={Styles.container}>
-              <StatusBar  barStyle="light-content" translucent={true} />
+        <StatusBar barStyle="light-content" translucent={true} />
 
         <View>
           {/**Schedule Card */}
@@ -51,23 +51,23 @@ export default class UserDashboard extends Component {
 
           {/** Services */}
           <View View style={Styles.bgwhite}>
-          <View style={Styles.contentContainer}>
-            <View style={Styles.title}>
-              <Text style={Styles.textTitle}>Services</Text>
-              <TouchableOpacity style={Styles.addButton}>
-                <Text>See All</Text>
-                <Ionicons name="ios-open-outline" size={20} color="black" />
-              </TouchableOpacity>
+            <View style={Styles.contentContainer}>
+              <View style={Styles.title}>
+                <Text style={Styles.textTitle}>Services</Text>
+                <TouchableOpacity style={Styles.addButton}>
+                  <Text>See All</Text>
+                  <Ionicons name="ios-open-outline" size={20} color="black" />
+                </TouchableOpacity>
+              </View>
+              <FlatList
+                style={Styles.flatlist}
+                data={serviceDATA}
+                renderItem={({ item }) => <ServiceItem title={item.title} />}
+                keyExtractor={(item) => item.id}
+                horizontal
+                showsHorizontalScrollIndicator={false}
+              />
             </View>
-            <FlatList
-              style={Styles.flatlist}
-              data={serviceDATA}
-              renderItem={({ item }) => <ServiceItem title={item.title} />}
-              keyExtractor={(item) => item.id}
-              horizontal
-              showsHorizontalScrollIndicator={false}
-            />
-          </View>
           </View>
         </View>
       </SafeAreaView>
@@ -76,19 +76,18 @@ export default class UserDashboard extends Component {
 }
 
 const Styles = StyleSheet.create({
-    schedContainer: {
-        margin: 10,
-        justifyContent: "center",
-        borderRadius: 15,
-        backgroundColor: "#1D272F",
-        shadowColor: "F86A40",
-        shadowOffset: { width: 0, height: 5 },
-        shadowOpacity: 0.1,
-        shadowRadius: 10,
-        // Add elevation for Android
-        elevation: 5,
-      },
-
+  schedContainer: {
+    margin: 10,
+    justifyContent: "center",
+    borderRadius: 15,
+    backgroundColor: "#1D272F",
+    shadowColor: "F86A40",
+    shadowOffset: { width: 0, height: 5 },
+    shadowOpacity: 0.1,
+    shadowRadius: 10,
+    // Add elevation for Android
+    elevation: 5,
+  },
 
   contentContainer: {
     margin: 10,
@@ -133,19 +132,20 @@ const Styles = StyleSheet.create({
     borderRadius: 10,
     padding: 10,
   },
-  bgwhite:{
-    backgroundColor:"white",
-    marginTop:15,
-    height:"100%",
-    marginHorizontal:10,
-    borderTopRightRadius:25,
-    borderTopLeftRadius:25
+  bgwhite: {
+    backgroundColor: "white",
+    marginTop: 15,
+    height: "100%",
+    marginHorizontal: 10,
+    borderTopRightRadius: 25,
+    borderTopLeftRadius: 25,
   },
-  container:{
-    backgroundColor:"#1D272F",
-    height:"100%"
+  container: {
+    backgroundColor: "#1D272F",
+    height: "100%",
   },
 
-  
-
+  service:{
+    marginHorizontal:5
+  }
 });

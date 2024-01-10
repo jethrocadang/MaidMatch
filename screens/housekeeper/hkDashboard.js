@@ -57,13 +57,15 @@ export default class HkDashboard extends Component {
     ];
 
     const TimeItem = ({ title }) => <Time timeContent={title} />;
-    const ServiceItem = ({ title }) => <ServiceText title={title} type="big" />;
+    const ServiceItem = ({ title }) => <ServiceText title={title} type="big" style={Styles.service}/>;
 
     return (
       <SafeAreaView style={Styles.container}>
         <StatusBar  barStyle="light-content" translucent={true} />
 
-        <ScheduleCard/>
+        <ScheduleCard
+          style={Styles.schedCard}
+        />
 
         {/* Available Time */}
         <View style={Styles.bgwhite}>
@@ -218,5 +220,11 @@ const Styles = StyleSheet.create({
     marginHorizontal:10,
     borderTopRightRadius:25,
     borderTopLeftRadius:25
+  },
+  schedCard:{
+    marginHorizontal:10
+  },
+  service:{
+    marginHorizontal:5
   }
 });

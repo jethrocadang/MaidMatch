@@ -9,42 +9,80 @@ import "react-native-gesture-handler";
 
 const Stack = createStackNavigator();
 
+import LandingScreen from "./screens/landingScreen";
+import SigninScreen from "./screens/signinScreen";
+import SignupScreen from "./screens/signupScreen";
+import VerifyScreen from "./screens/verifyScreen";
+import { HkTabNavigator, UserTabNavigator } from "./screens/tabNavigator";
 import {
-  LandingScreen,
-  SigninScreen,
-  SignupScreen,
-  VerifyScreen,
-  BookingsScreen,
-  UpdateProfile,
-  Profile,
   CheckBooking,
-  HkDashboard,
-  UserDashboard,
-  UserBooking,
-  BookingTabNavigator,
-  UserChat
-
-  
+  UpdateProfile,
+  HkChat,
+  HkChatArea,
+  UserUpdateProfile,
+  UserChatArea,
+  UserServices
 } from "./screens";
 
 export default class App extends Component {
   render() {
     return (
-      // <NavigationContainer>
-      //   <Stack.Navigator>
-      //   <Stack.Screen name="LandingScreen" component={LandingScreen} options={{ headerShown: false }}/>
-      //   <Stack.Screen name="Login" component={SigninScreen} options={{ headerShown: false }}/>
-      //   <Stack.Screen name="Register" component={SignupScreen} options={{ headerShown: false }}/>
-      //   <Stack.Screen name="Verify" component={VerifyScreen} options={{ headerShown: false }}/>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen
+            name="LandingScreen"
+            component={LandingScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Register"
+            component={SignupScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Login"
+            component={SigninScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="UserTab"
+            component={UserTabNavigator}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="HKTab"
+            component={HkTabNavigator}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="HKChatArea"
+            component={HkChatArea}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="UpdateProfile"
+            component={UpdateProfile}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="CheckBooking"
+            component={CheckBooking}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="UserChatArea"
+            component={UserChatArea}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="UserUpdateProfile"
+            component={UserUpdateProfile}
+            options={{ headerShown: false }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
 
-
-
-      //   </Stack.Navigator>
-      // </NavigationContainer>
-      // <BookingsNavigator/>
-      <UserChat/>
-
-    )
+    );
   }
 }
 

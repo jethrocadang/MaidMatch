@@ -14,7 +14,7 @@ import { CustomImage } from "../../components";
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
-export default class UserChat extends Component {
+export default class HkChat extends Component {
   render() {
     const { navigation } = this.props;
 
@@ -22,10 +22,9 @@ export default class UserChat extends Component {
       <SafeAreaView>
         <ScrollView>
           {/* Touchable Chats */}
-          <TouchableOpacity
-            style={Styles.chatContainer}
-            onPress={() => navigation.navigate("UserChatArea")}
-          >
+          <TouchableOpacity 
+          style={Styles.chatContainer}
+          onPress={() => navigation.navigate('HKChatArea')}>
             {/* Image Container */}
             <View>
               <CustomImage type="smaller" />
@@ -179,6 +178,7 @@ export default class UserChat extends Component {
               <Text>latest message ..</Text>
             </View>
           </TouchableOpacity>
+          
         </ScrollView>
       </SafeAreaView>
     );

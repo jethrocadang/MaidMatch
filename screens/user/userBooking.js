@@ -73,7 +73,7 @@ export default class UserBooking extends Component {
 
     const TimeItem = ({ title }) => <Time timeContent={title} />;
     const DateItem = ({title, day}) => <Date date={title} day={day} />
-    const ServiceItem = ({ title }) => <ServiceText title={title} type="big" />;
+    const ServiceItem = ({ title }) => <ServiceText title={title} type="big" style={Styles.service} />;
 
 
     return (
@@ -99,7 +99,7 @@ export default class UserBooking extends Component {
           </View>
           {/** Available Day */}
           <View style={Styles.contentContainer}>
-            <Text>Available Day</Text>
+            <Text style={Styles.textTitle}>Available Day</Text>
             <FlatList
             style={Styles.flatlist}
             data={dateDATA}
@@ -111,7 +111,7 @@ export default class UserBooking extends Component {
           </View>
           {/**Available Time */}
           <View style={Styles.contentContainer}>
-            <Text>Available Time</Text>
+            <Text style={Styles.textTitle}>Available Time</Text>
             <FlatList
             style={Styles.flatlist}
             data={timeDATA}
@@ -191,4 +191,13 @@ const Styles = StyleSheet.create({
     fontSize: 16,
     color: "#1F1F29",
   },
+  flatlist:{
+    marginVertical: 10,
+    alignContent: "center",
+    borderRadius: 10,
+    padding: 10,
+  },
+  service:{
+    marginHorizontal:5
+  }
 });

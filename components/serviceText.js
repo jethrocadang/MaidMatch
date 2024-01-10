@@ -8,7 +8,7 @@ export default class ServiceText extends Component{
 
         return(
             
-            <View>
+            <View style={this.props.style}>
                 <Text style={selectedStyle}>
                 {this.props.title}
                 </Text>

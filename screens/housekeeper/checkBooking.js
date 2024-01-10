@@ -7,7 +7,7 @@ import {
   StyleSheet,
 } from "react-native";
 
-import { CustomImage, ServiceText, CustomButtons } from "../../../../components";
+import { CustomImage, ServiceText, CustomButtons } from "../../components";
 
 import { Ionicons, Feather } from "@expo/vector-icons";
 
@@ -17,8 +17,17 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 export default class CheckBooking extends Component {
   render() {
+    const { navigation } = this.props;
+
     return (
       <SafeAreaView>
+         <View style={Styles.Tabheader}>
+            <TouchableOpacity onPress={() => navigation.navigate("HKTab")}>
+              
+              <Ionicons name="arrow-back-outline" size={30} color="black" />
+            </TouchableOpacity>
+        
+          </View>
         {/* header */}
         <View>
           <CustomImage />
@@ -26,14 +35,14 @@ export default class CheckBooking extends Component {
             
           <TouchableOpacity
             style={Styles.edit}
-            onPress={() => navigate("updateprofile")}
+            onPress={() => navigation.navigate("Profile")}
           >
             <Ionicons name="ios-open-outline" size={18} color="black" />
             <Text>View Profile</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={Styles.edit}
-            onPress={() => navigate("updateprofile")}
+            onPress={() => navigation.navigate("updateprofile")}
           >
             <Ionicons name="search-outline" size={18} color="black" />
             <Text>Find Location</Text>
@@ -130,14 +139,22 @@ const Styles = StyleSheet.create({
     justifyContent:"center",
   }, 
   contentContainer:{
-    padding:10,
-    borderWidth:1,
+    padding:20,
     margin:10,
     borderRadius:10,
+    backgroundColor: "white",
+    shadowColor: "F86A40",
+    shadowOffset: { width: 0, height: 5 },
+    shadowOpacity: 0.1,
+    shadowRadius: 10,
+    // Add elevation for Android
+    elevation: 5,
 
   },
   subContainer:{
-    marginVertical:5
+    marginVertical:5,
+    gap:5,
+    paddingEnd:10
   },
   acceptDeclineContainer:{
     flexDirection: "column",

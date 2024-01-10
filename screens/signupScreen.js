@@ -12,7 +12,8 @@ import {
   Modal,
 } from "react-native";
 
-import { CustomButtons, CustomInputs } from "../../components";
+import { CustomButtons, CustomInputs } from "../components";
+import { Ionicons } from "@expo/vector-icons";
 
 export default class SignupScreen extends Component {
   /** User Type Client & Houskeeper */
@@ -60,20 +61,27 @@ export default class SignupScreen extends Component {
       setTimeout(() => {
         this.hideVerificationModal();
         if (value === "Housekeeper") {
-          this.props.navigation.navigate("");
+          this.props.navigation.navigate("HKTab");
         } else if (value === "Client") {
-          this.props.navigation.navigate("");
+          this.props.navigation.navigate("UserTab");
         }
-      }, 3000); 
+      },); 
     };
 
     return (
       <SafeAreaView>
         <View>
+        <View style={Styles.Tabheader}>
+            <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+              
+              <Ionicons name="arrow-back-outline" size={30} color="black" />
+            </TouchableOpacity>
+        
+          </View>
           <Text style={Styles.h1}>Create Account</Text>
 
           <Image
-            source={require("../../assets/createaccount-icon.png")}
+            source={require("../assets/createaccount-icon.png")}
             style={Styles.image}
           />
 

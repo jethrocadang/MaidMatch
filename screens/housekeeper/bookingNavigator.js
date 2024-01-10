@@ -6,6 +6,8 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import { NavigationContainer } from "@react-navigation/native";
 
+import { Ionicons } from '@expo/vector-icons';
+
 import AcceptedScreen from "./acceptedScreen";
 import PendingScreen from "./pendingScreen";
 import CheckBooking from "./checkBooking";
@@ -16,12 +18,27 @@ const Stack = createStackNavigator();
 class BookingTabNavigator extends Component {
   render() {
     return (
-      <NavigationContainer>
-        <Tab.Navigator >
+        <Tab.Navigator
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ focused, color, size }) => {
+            let iconName;
+
+            if (route.name === 'Accepted') {
+              iconName = focused
+                ? 'checkmark-circle-outline'
+                : 'checkmark-circle-outline';
+            } else if (route.name === 'Pending') {
+              iconName = focused ? 'ios-list' : 'ios-list-outline';
+            }
+
+            return <Ionicons name={iconName} size={24} color={color} />;
+          },
+          tabBarActiveTintColor: 'tomato',
+          tabBarInactiveTintColor: 'gray',
+        })} >
           <Tab.Screen name="Accepted" component={AcceptedScreen} />
-          <Tab.Screen name="pending" component={PendingScreen} />
+          <Tab.Screen name="Pending" component={PendingScreen} />
         </Tab.Navigator>
-      </NavigationContainer>
     );
   }
 }

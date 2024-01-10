@@ -2,7 +2,7 @@ import React from "react";
 import { Component } from "react";
 import { View, SafeAreaView, Text, TextInput, StyleSheet } from "react-native";
 
-import { CustomButtons } from "../../components";
+import { CustomButtons } from "../components";
 
 export default class VerifyScreen extends Component {
   render() {

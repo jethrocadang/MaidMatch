@@ -1,12 +1,26 @@
 import React, { Component } from "react";
-import { SafeAreaView, View, StyleSheet, Text } from "react-native";
+import { SafeAreaView, View, StyleSheet, Text, TouchableOpacity, StatusBar } from "react-native";
 
-import { CustomImage, CustomInputs, CustomButtons } from "../../../components";
+import { CustomImage, CustomInputs, CustomButtons } from "../../components";
+
+import { Ionicons } from '@expo/vector-icons';
 
 export default class UpdateProfile extends Component {
   render() {
+    const { navigation } = this.props;
+
     return (
       <SafeAreaView style={Styles.mainContainer}>
+            <StatusBar  barStyle="default" translucent={true} />
+
+         <View style={Styles.Tabheader}>
+            <TouchableOpacity onPress={() => navigation.navigate("HKTab")}>
+              
+              <Ionicons name="arrow-back-outline" size={30} color="black" />
+            </TouchableOpacity>
+        
+          </View>
+     
         <View style={Styles.header}>
           <CustomImage type="big" />
           <Text style={Styles.name}>Sherline Armie</Text>
@@ -42,6 +56,8 @@ export default class UpdateProfile extends Component {
         </View>
         <CustomButtons
             title="Update Profile"
+            type="primary"
+            textColor="white"
         />
       </SafeAreaView>
     );
@@ -67,5 +83,13 @@ mainContainer:{
   },
   inputs: {
     marginTop: 10,
+  },
+  Tabheader: {
+    flexDirection: "row",
+    alignItems: "center",
+    paddingHorizontal: 15,
+    gap: 15,
+    borderBottomWidth: 1,
+    borderColor: "#E8E9EB",
   },
 });
