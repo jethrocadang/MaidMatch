@@ -21,66 +21,69 @@ import {
   HkChatArea,
   UserUpdateProfile,
   UserChatArea,
-  UserServices
+  UserServices,
+  CreateBooking,
+  UserDashboard
 } from "./screens";
 
 export default class App extends Component {
   render() {
     return (
-      <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen
-            name="LandingScreen"
-            component={LandingScreen}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="Register"
-            component={SignupScreen}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="Login"
-            component={SigninScreen}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="UserTab"
-            component={UserTabNavigator}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="HKTab"
-            component={HkTabNavigator}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="HKChatArea"
-            component={HkChatArea}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="UpdateProfile"
-            component={UpdateProfile}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="CheckBooking"
-            component={CheckBooking}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="UserChatArea"
-            component={UserChatArea}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="UserUpdateProfile"
-            component={UserUpdateProfile}
-            options={{ headerShown: false }}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
+      // <NavigationContainer>
+      //   <Stack.Navigator>
+      //     <Stack.Screen
+      //       name="LandingScreen"
+      //       component={LandingScreen}
+      //       options={{ headerShown: false }}
+      //     />
+      //     <Stack.Screen
+      //       name="Register"
+      //       component={SignupScreen}
+      //       options={{ headerShown: false }}
+      //     />
+      //     <Stack.Screen
+      //       name="Login"
+      //       component={SigninScreen}
+      //       options={{ headerShown: false }}
+      //     />
+      //     <Stack.Screen
+      //       name="UserTab"
+      //       component={UserTabNavigator}
+      //       options={{ headerShown: false }}
+      //     />
+      //     <Stack.Screen
+      //       name="HKTab"
+      //       component={HkTabNavigator}
+      //       options={{ headerShown: false }}
+      //     />
+      //     <Stack.Screen
+      //       name="HKChatArea"
+      //       component={HkChatArea}
+      //       options={{ headerShown: false }}
+      //     />
+      //     <Stack.Screen
+      //       name="UpdateProfile"
+      //       component={UpdateProfile}
+      //       options={{ headerShown: false }}
+      //     />
+      //     <Stack.Screen
+      //       name="CheckBooking"
+      //       component={CheckBooking}
+      //       options={{ headerShown: false }}
+      //     />
+      //     <Stack.Screen
+      //       name="UserChatArea"
+      //       component={UserChatArea}
+      //       options={{ headerShown: false }}
+      //     />
+      //     <Stack.Screen
+      //       name="UserUpdateProfile"
+      //       component={UserUpdateProfile}
+      //       options={{ headerShown: false }}
+      //     />
+      //   </Stack.Navigator>
+      // </NavigationContainer>
+      <UserDashboard/>
 
     );
   }

@@ -10,4 +10,5 @@ export {default as ServiceText} from './serviceText';
 export {default as ScheduleCard} from './scheduleCard';
 export {default as Time} from './time';
 export {default as Date} from './date';
+export {default as UserBookingCard} from './userBookingCard';
 

@@ -73,9 +73,7 @@ export default class BookingCard extends React.Component {
   }
 }
 
-class UserBooking extends Component {
-  
-}
+
 
 const Styles = StyleSheet.create({
   cardContainer: {

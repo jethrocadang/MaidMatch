@@ -4,11 +4,11 @@ import { Image, View, StyleSheet } from "react-native";
 export default class CustomImage extends React.Component {
     render (){
 
-        const selectedStyle = this.props.type === 'big' ? Styles.big : this.props.type === 'small' ?  Styles.small :  this.props.type === 'smaller' ? Styles.smaller : Styles.smallest;
+        const selectedStyle = this.props.type === 'big' ? Styles.big : this.props.type === 'medium' ?  Styles.medium : this.props.type === 'small' ?  Styles.small :  this.props.type === 'smaller' ? Styles.smaller : Styles.smallest;
 
 
         return (
-            <View>
+            <View style={this.props.style}>
                 <Image
                     source={require('/Users/jethrocadang/Desktop/MaidMatch/assets/profilepic.png')}
                     style={selectedStyle}
@@ -43,7 +43,13 @@ const Styles= StyleSheet.create({
         alignSelf: "center",
         margin: 10,
       },
-
+      medium:{
+        height: 75,
+        width: 75,
+        borderRadius: 50,
+        alignSelf: "center",
+        margin: 10,
+    },
     big:{
         height: 100,
         width: 100,
