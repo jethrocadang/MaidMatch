@@ -59,12 +59,16 @@ export default class HkDashboard extends Component {
     const TimeItem = ({ title }) => <Time timeContent={title} />;
     const ServiceItem = ({ title }) => <ServiceText title={title} type="big" style={Styles.service}/>;
 
+    const {navigation} = this.props;
+    const handleCheckBookingBtn = () => navigation.navigate("CheckAcceptedBooking");
+
     return (
       <SafeAreaView style={Styles.container}>
         <StatusBar  barStyle="light-content" translucent={true} />
 
         <ScheduleCard
           style={Styles.schedCard}
+          onPress={handleCheckBookingBtn}
         />
 
         {/* Available Time */}

@@ -61,9 +61,9 @@ export default class SignupScreen extends Component {
       setTimeout(() => {
         this.hideVerificationModal();
         if (value === "Housekeeper") {
-          this.props.navigation.navigate("HKTab");
+          this.props.navigation.navigate("HkVerify");
         } else if (value === "Client") {
-          this.props.navigation.navigate("UserTab");
+          this.props.navigation.navigate("UserVerify");
         }
       },); 
     };

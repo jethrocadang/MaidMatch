@@ -63,11 +63,13 @@ export default class CreateBooking extends Component {
     const TimeItem = ({ title }) => <Time timeContent={title} />;
     const DateItem = ({ day, date }) => <Date day={day} date={date} />;
 
+    const { navigation } = this.props;
+
     return (
       <SafeAreaView>
         <View style={Styles.Tabheader}>
           <TouchableOpacity
-            onPress={() => navigation.navigate("HKTab")}
+            onPress={() => navigation.navigate("UserTab")}
             style={Styles.arrow}
           >
             <Ionicons name="arrow-back-outline" size={30} color="black" />

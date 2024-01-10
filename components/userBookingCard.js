@@ -45,7 +45,7 @@ export default class UserBookingCard extends Component {
               </View>
             </View>
           </View>
-          <TouchableOpacity style={Styles.btn}>
+          <TouchableOpacity style={Styles.btn} onPress={this.props.onPress}>
             <Text style={Styles.btnTxt}>Create Booking</Text>
           </TouchableOpacity>
         </View>
@@ -84,12 +84,12 @@ const Styles = StyleSheet.create({
   ratings: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 25,
+    gap: 10,
   },
   starsContainer: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 5,
+    gap: 3,
   },
   stars: {
     flexDirection: "row",

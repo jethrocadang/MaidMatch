@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Text, Image, StyleSheet } from "react-native";
+import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 
 import { Ionicons, Feather, MaterialCommunityIcons } from "@expo/vector-icons";
 
@@ -7,7 +7,8 @@ export default class ScheduleCard extends Component {
   render() {
     return (
       <View style={this.props.style}>
-        <View style={Styles.container}>
+      <TouchableOpacity style={Styles.container} onPress={this.props.onPress}>
+
           <View style={Styles.headerContainer}>
             {/**Image */}
             <Image
@@ -38,7 +39,7 @@ export default class ScheduleCard extends Component {
             />
             <Text style={Styles.text}>10:00 AM</Text>
           </View>
-        </View>
+        </TouchableOpacity>
       </View>
     );
   }

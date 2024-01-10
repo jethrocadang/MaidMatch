@@ -65,6 +65,7 @@ const Styles = StyleSheet.create({
     paddingVertical: 5,
     margin: 10,
     borderRadius: 15,
+    borderColor:"#E8E9EB"
   },
   flatlist:{
     marginHorizontal:15,

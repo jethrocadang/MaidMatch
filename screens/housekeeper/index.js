@@ -9,6 +9,8 @@ export {default as Profile} from './profile';
 export {default as UpdateProfile} from './updateProfile';
 export {default as HkChat} from './hkChat';
 export {default as HkChatArea} from './hkChatArea';
+export {default as CheckAcceptedBooking} from './checkAcceptedBooking';
+
 
 
 

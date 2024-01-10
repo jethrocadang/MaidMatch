@@ -7,9 +7,10 @@ import {
   TouchableOpacity,
   FlatList,
   StatusBar,
+  ScrollView,
 } from "react-native";
 
-import { ScheduleCard, ServiceText } from "../../components";
+import { ScheduleCard, ServiceText, UserBookingCard } from "../../components";
 
 import { Ionicons } from "@expo/vector-icons";
 
@@ -30,11 +31,19 @@ export default class UserDashboard extends Component {
       },
     ];
 
-    const ServiceItem = ({ title }) =>  <ServiceText title={title} type="big" style={Styles.service} />;
+    const ServiceItem = ({ title }) => (
+      <ServiceText title={title} type="big" style={Styles.service} />
+    );
+
+    const { navigation } = this.props;
+
+    const handleBtnCheckBooking = () => navigation.navigate("UserCheckBooking");
+    const handleBtnCreateBooking = () => navigation.navigate("CreateBooking");
+
 
     return (
       <SafeAreaView style={Styles.container}>
-        <StatusBar barStyle="light-content" translucent={true} />
+        <StatusBar barStyle="default" translucent={true} />
 
         <View>
           {/**Schedule Card */}
@@ -46,7 +55,9 @@ export default class UserDashboard extends Component {
                 <Ionicons name="ios-open-outline" size={20} color="white" />
               </TouchableOpacity>
             </View>
-            <ScheduleCard />
+            <ScheduleCard 
+              onPress={handleBtnCheckBooking}
+            />
           </View>
 
           {/** Services */}
@@ -68,6 +79,16 @@ export default class UserDashboard extends Component {
                 showsHorizontalScrollIndicator={false}
               />
             </View>
+
+            {/* Top Houskeeper */}
+            <View style={Styles.titleContainer}>
+              <Text style={Styles.textTitle}>Top Housekeepers</Text>
+            </View>
+            <ScrollView style={Styles.scroll}>
+              <UserBookingCard style={Styles.bookingCard} 
+                onPress={handleBtnCreateBooking}
+              />
+            </ScrollView>
           </View>
         </View>
       </SafeAreaView>
@@ -145,7 +166,15 @@ const Styles = StyleSheet.create({
     height: "100%",
   },
 
-  service:{
-    marginHorizontal:5
-  }
+  service: {
+    marginHorizontal: 5,
+  },
+
+  //scroll
+  titleContainer:{
+    margin:13
+  },
+  bookingCard: {
+    marginHorizontal: 10,
+  },
 });

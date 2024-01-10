@@ -7,6 +7,8 @@ export {default as UserServices } from './userServices';
 export {default as UserProfile } from './userProfile';
 export {default as UserUpdateProfile } from './userUpdateProfile';
 export {default as CreateBooking } from './createBooking';
+export {default as UserCheckBooking } from './userCheckBooking';
+
 
 
 

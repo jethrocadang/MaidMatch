@@ -14,7 +14,7 @@ import { CustomButtons } from "../components";
 
 import { Feather, Ionicons } from "@expo/vector-icons";
 
-export default class VerifyScreen extends Component {
+export default class UserVerifyScreen extends Component {
   state = {
     otpDigits: ["", "", "", "", ""],
     timer: null,
@@ -35,21 +35,6 @@ export default class VerifyScreen extends Component {
 
     this.setState({ otpDigits: newOtpDigits });
   };
-
-  handleVerifyOTP = () => {
-    const enteredOTP = this.state.otpDigits.join("");
-
-    const correctOTP = "";
-    if (enteredOTP === correctOTP ) {
-      Alert.alert("OTP Verified", "You are successfully logged in!");
-      // Clear the timer when OTP is verified
-      this.clearTimer();
-    } else {
-      Alert.alert("Invalid OTP", "Please enter the correct OTP.");
-    }
-  };
-
-  
 
   startTimer = () => {
     const timer = setInterval(() => {
@@ -81,8 +66,20 @@ export default class VerifyScreen extends Component {
     const { timerDuration, isResendDisabled } = this.state;
     const { navigation } = this.props;
 
-    const handleBtnPress = () => navigation.navigate("HKTab");
- 
+    handleVerifyOTP = () => {
+      const enteredOTP = this.state.otpDigits.join("");
+
+      const correctOTP = "";
+      if (enteredOTP === correctOTP) {
+        Alert.alert("OTP Verified", "You are successfully logged in!");
+        this.clearTimer();
+
+        navigation.navigate("HkTab");
+      } else {
+        Alert.alert("Invalid OTP", "Please enter the correct OTP.");
+      }
+    };
+
     return (
       <SafeAreaView>
         {/* Tab Header */}
@@ -106,7 +103,6 @@ export default class VerifyScreen extends Component {
             <Text style={Styles.etxt}> email@example.com</Text>
           </Text>
         </View>
-
 
         {/* OTP Boxes */}
         <View style={Styles.boxContainer}>
@@ -135,13 +131,12 @@ export default class VerifyScreen extends Component {
           </TouchableOpacity>
         </View>
 
-
         <CustomButtons
           type="primary"
           title="Submit"
           textColor="white"
           size="small"
-          onPress={handleBtnPress}
+          onPress={() => navigation.navigate("UserTab")}
         />
       </SafeAreaView>
     );
@@ -213,11 +208,10 @@ const Styles = StyleSheet.create({
     flexDirection: "row",
     gap: 5,
     alignSelf: "center",
-    marginBottom:50,
-    
+    marginBottom: 50,
   },
-  resendTxt:{
+  resendTxt: {
     color: "#F86A40",
-    fontWeight:"600"
-  }
+    fontWeight: "600",
+  },
 });

@@ -13,13 +13,13 @@ import { Ionicons, Feather } from "@expo/vector-icons";
 
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
-export default class CheckBooking extends Component {
+export default class CheckAcceptedBooking extends Component {
   render() {
     const { navigation } = this.props;
 
     return (
       <SafeAreaView>
-         <View style={Styles.Tabheader}>
+        <View style={Styles.Tabheader}>
           <TouchableOpacity
             onPress={() => navigation.navigate("HKTab")}
             style={Styles.arrow}
@@ -32,9 +32,7 @@ export default class CheckBooking extends Component {
         </View>
         {/* header */}
         <View>
-          <CustomImage 
-            type="medium"
-          />
+          <CustomImage type="medium" />
           <View style={Styles.buttonContainer}>
             <TouchableOpacity
               style={Styles.edit}
@@ -47,8 +45,8 @@ export default class CheckBooking extends Component {
               style={Styles.edit}
               onPress={() => navigation.navigate("updateprofile")}
             >
-              <Ionicons name="search-outline" size={18} color="black" />
-              <Text>Find Location</Text>
+              <Ionicons name="heart-outline" size={18} color="black" />
+              <Text>Rate Client</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -56,7 +54,7 @@ export default class CheckBooking extends Component {
         <View style={Styles.contentContainer}>
           {/* Customer Name */}
           <View style={Styles.subContainer}>
-            <Text style={Styles.h1}>Customer Name</Text>
+            <Text style={Styles.h1}>Housekeeper Name</Text>
             <View style={Styles.title}>
               <Ionicons name="person-outline" size={18} color="black" />
               <Text>John Doe</Text>
@@ -97,20 +95,21 @@ export default class CheckBooking extends Component {
             </View>
           </View>
         </View>
+
         {/* Buttons */}
         <View style={Styles.acceptDeclineContainer}>
           <CustomButtons
             type="primary"
             size="small"
-            title="Accept"
+            title="Mark as Done"
             textColor="white"
             icon={<Feather name="check-circle" size={18} color="white" />}
           />
-          <CustomButtons
+             <CustomButtons
             type="secondary"
             size="small"
-            title="Decline"
-            icon={<Feather name="x-circle" size={18} color="#1F1F29" />}
+            title="Go to Chat"
+            icon={<Ionicons name="chatbubble-outline" size={18} color="#1F1F29" />}
           />
         </View>
       </SafeAreaView>
@@ -146,6 +145,7 @@ const Styles = StyleSheet.create({
     marginTop: 10,
     marginHorizontal: 10,
     color: "blue",
+    gap: 3,
   },
   title: {
     flexDirection: "row",
@@ -182,5 +182,6 @@ const Styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center",
     gap: 10,
+    marginTop: 10,
   },
 });
